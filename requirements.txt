@@ -1,5 +1,1 @@
-os
-requests
-random
 discord.py
-regex

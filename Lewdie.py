@@ -60,5 +60,5 @@ async def on_message(message):
             await message.channel.send(links[0])
         else:
             await message.channel.send("Uh ohh! no link?")
-
+print("Loaded successfully")
 client.run(str(os.environ.get('TOKEN')))

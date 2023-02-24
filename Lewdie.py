@@ -1,7 +1,6 @@
 import os
 
 import discord
-import http
 import regex
 
 import e621
@@ -62,4 +61,4 @@ async def on_message(message):
         else:
             await message.channel.send("Uh ohh! no link?")
 
-client.run(os.environ["TOKEN"])
+client.run(os.environ.get["TOKEN"])

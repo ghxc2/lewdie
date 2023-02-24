@@ -1,7 +1,6 @@
 import os
 
 import requests
-import json
 import random
 # URL
 urlTemplate = "https://e621.net/posts.json?"
@@ -10,7 +9,7 @@ sauceTemplate = "https://e621.net/posts/"
 # Insures API user-agent
 headers = {
     'login': 'ghxc2',
-    'User-Agent': str(os.environ["E6TOKEN"])
+    'User-Agent': str(os.environ.get["E6TOKEN"])
 }
 
 # Shorthand for future coding

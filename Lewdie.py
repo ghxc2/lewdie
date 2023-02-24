@@ -61,4 +61,4 @@ async def on_message(message):
         else:
             await message.channel.send("Uh ohh! no link?")
 
-client.run(os.environ.get("TOKEN"))
+client.run(str(os.environ.get("TOKEN")))

@@ -9,7 +9,7 @@ sauceTemplate = "https://e621.net/posts/"
 # Insures API user-agent
 headers = {
     'login': 'ghxc2',
-    'User-Agent': str(os.environ.get("E6TOKEN"))
+    'User-Agent': str(os.environ.get('E6TOKEN'))
 }
 
 # Shorthand for future coding

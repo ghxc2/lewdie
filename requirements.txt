@@ -1,1 +1,3 @@
-discord
+discord.py
+regex
+requests

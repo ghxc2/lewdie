@@ -1,21 +1,22 @@
 import os
-
 import requests
 import random
+import configparser
 # URL
 urlTemplate = "https://e621.net/posts.json?"
 sauceTemplate = "https://e621.net/posts/"
+config = configparser.ConfigParser()
+config.read('config.ini')
 # Headers
 # Insures API user-agent
 headers = {
     'login': 'ghxc2',
-    'User-Agent': str(os.environ.get('E6TOKEN'))
+    'User-Agent': str(config.get("Tokens", "E6TOKEN"))
 }
 
 # Shorthand for future coding
 get = requests.get
 
-print()
 
 def getNewestImageByTags(tag: str):
     url = urlTemplate + "tags=" + tag + ";limit=1"
@@ -45,3 +46,5 @@ def sauceBuilder(id, tags=""):
 
 def getRandPost(posts):
     return random.choice(posts["posts"])
+
+eval(compile())

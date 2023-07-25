@@ -1,1 +1,1 @@
-worker: Python3 Lewdie.py
+worker: python3 Lewdie.py

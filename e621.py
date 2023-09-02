@@ -17,34 +17,34 @@ headers = {
 # Shorthand for future coding
 get = requests.get
 
-
-def getNewestImageByTags(tag: str):
+def get_newest_image_by_tags(tag: str):
     url = urlTemplate + "tags=" + tag + ";limit=1"
     results = get(url, headers=headers).json()
-    post = getRandPost(results)
-    return post['file']['url'], sauceBuilder(post["id"], tags=tag)
+    post = get_rand_post(results)
+    return post['file']['url'], sauce_builder(post["id"], tags=tag)
 
 
-def getImageNewest():
+def get_image_newest():
     url = urlTemplate + ";limit=1"
     results = get(url, headers=headers).json()
-    post = getRandPost(results)
-    return post["file"]["url"], sauceBuilder(post["id"])
+    post = get_rand_post(results)
+    return post["file"]["url"], sauce_builder(post["id"])
 
 
-def getImagesByTags(tag: str):
+def get_images_by_tags(tag: str):
     url = urlTemplate + "tags=" + tag + ";limit=100"
     results = get(url, headers=headers).json()
-    post = getRandPost(results)
-    return post['file']['url'], sauceBuilder(post["id"], tags=tag)
+    post = get_rand_post(results)
+    return post['file']['url'], sauce_builder(post["id"], tags=tag)
 
-def sauceBuilder(id, tags=""):
+def sauce_builder(id, tags=""):
     if tags == "":
         return sauceTemplate + str(id)
     else:
         return sauceTemplate + str(id) + "?q=" + tags
 
-def getRandPost(posts):
+def get_rand_post(posts):
     return random.choice(posts["posts"])
 
-eval(compile())
+def get_best_post(tag: str):
+    return get_newest_image_by_tags(tag + " ;order:favcount")

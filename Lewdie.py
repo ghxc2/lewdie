@@ -9,14 +9,14 @@ intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 de = discord.Embed()
 blacklist = {"...", "0.0", "4.4", "7.7", "9.9"}
-commands = "!help\n" \
+commands = "```!help\n" \
            "--- e621 Commands ---\n" \
            "!e6tag\n" \
            "!e6new\n" \
            "!e6fav\n" \
            "--- Misc Commmands ---\n" \
            "!sauce\n" \
-           "!icon\n"
+           "!icon\n```"
 
 
 # Start of functions
@@ -35,6 +35,8 @@ async def command_selector(message):
             await sauce(message)
         case "!icon":
             await icon(message)
+        case "!help":
+            await help_command(message)
 
 
 # ---e6 Commands--- #

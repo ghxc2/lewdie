@@ -47,4 +47,4 @@ def get_rand_post(posts):
     return random.choice(posts["posts"])
 
 def get_best_post(tag: str):
-    return get_newest_image_by_tags(tag + " ;order:favcount")
+    return get_newest_image_by_tags(tag + "+order:favcount")

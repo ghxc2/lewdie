@@ -1,7 +1,3 @@
-import os
-import this
-import time
-
 import requests
 import configparser
 
@@ -10,13 +6,14 @@ config.read('config.ini')
 
 # Header info
 
-api_key=config.get("Tokens", "SAUCENAOTOKEN")
-EnableRename=False
-minsim='90!'
-url = 'http://saucenao.com/search.php?output_type=2&minsim='+minsim+'&api_key='+api_key
+api_key = config.get("Tokens", "SAUCENAOTOKEN")
+enable_rename = False
+min_sim = '90!'
+url = 'http://saucenao.com/search.php?output_type=2&minsim='+min_sim+'&api_key='+api_key
 get = requests.get
 
-def getSauce(img: str):
+
+def get_sauce(img: str):
     try:
         global url
         url += '&url=' + img
@@ -25,9 +22,9 @@ def getSauce(img: str):
         # e621 priority
         # Might throw error unsure
         try:
-            for resulturl in result['data']['ext_urls']:
-                if "e621" in resulturl:
-                    return resulturl
+            for result_url in result['data']['ext_urls']:
+                if "e621" in result_url:
+                    return result_url
         except:
             x = 1
 
@@ -37,4 +34,3 @@ def getSauce(img: str):
             return result['data']['ext_urls'][0]
     except:
         raise Exception("No results found")
-

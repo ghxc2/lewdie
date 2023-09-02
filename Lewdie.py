@@ -102,7 +102,7 @@ async def e6fav(message):
 async def sauce(message):
     response_list = ["Saucey comin up!"]
     try:
-        response_list.append("Sauce: " + saucenao.getSauce(message.content[7:]))
+        response_list.append("Sauce: " + saucenao.get_sauce(message.content[7:]))
     except:
         response_list.append("Couldn find it, sowwy >>")
     await message.channel.send("\n".join(response_list))

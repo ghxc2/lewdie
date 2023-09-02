@@ -29,39 +29,38 @@ async def command_selector(message):
 
 # ---e6 Commands--- #
 async def e6new(message):
+    response_list = ["The hottest sauce of the press! ;3"]
     if message.content == "!e6new":
         links = e621.getImageNewest()
-        await message.channel.send("The hottest sauce of the press! ;3")
-        await message.channel.send("Sauce: <" + links[1] + ">")
-        await message.channel.send(links[0])
+        response_list.append("Sauce: <" + links[1] + ">")
+        response_list.append("" + links[0])
     else:
         tags = message.content.split(" ")
         tags = tags[1:]
         links = e621.getNewestImageByTags("+".join(tags))
-        await message.channel.send("The hottest sauce of the press! ;3")
-        await message.channel.send("Jus what you wan: " + " ".join(tags))
-        await message.channel.send("Sauce: <" + links[1] + ">")
-        await message.channel.send(links[0])
+        response_list.append("Jus what you wan: " + " ".join(tags))
+        response_list.append("Sauce: <" + links[1] + ">")
+        response_list.append("" + links[0])
 
+    await message.channel.send("\n".join(response_list))
 
 async def e6tag(message):
+    tags = message.content.split(" ")
+    tags = tags[1:]
+    tags_str = "+".join(tags)
+    response_list = ['ohh~! coming up! Tags: ' + " ".join(tags)]
     try:
-        tags = message.content.split(" ")
-
-        tags = tags[1:]
-        await message.channel.send('ohh~! coming up! Tags: ' + " ".join(tags))
-        tags_str = "+".join(tags)
         links = e621.getImagesByTags(tags_str)
         if "latias" in message.content:
-            await message.channel.send('Me~? >//w//<')
-        await message.channel.send("Sauce: <" + links[1] + ">")
+            response_list.append('Me~? >//w//<')
+        response_list.append("Sauce: <" + links[1] + ">")
         if links[0] != "None":
-            await message.channel.send(links[0])
+            response_list.append(links[0])
         else:
-            await message.channel.send("Uh ohh! no link?")
+            response_list.append("Uh ohh! no link?")
     except:
-        await message.channel.send("None cri sowy ;-;")
-
+        response_list.append("None cri sowy ;-;")
+    await message.channel.send("\n".join(response_list))
 
 async def e6fav(message):
     return
@@ -73,12 +72,12 @@ async def e6score(message):
 
 # ---Sauce--- #
 async def sauce(message):
-    await message.channel.send("Saucey comin up!")
+    response_list = ["Saucey comin up!"]
     try:
-        await message.channel.send("Sauce: " + saucenao.getSauce(message.content[7:]))
+        response_list.append("Sauce: " + saucenao.getSauce(message.content[7:]))
     except:
-        await message.channel.send("Couldn find it, sowwy >>")
-
+        response_list.append("Couldn find it, sowwy >>")
+    await message.channel.send("\n".join(response_list))
 
 # -- Icons! -- #
 async def icon(message):

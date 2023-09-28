@@ -1,12 +1,12 @@
 import requests
 import random
+import ensureConfig
 import configparser
-
 
 # URL
 urlTemplate = "https://e621.net/posts.json?"
 sauceTemplate = "https://e621.net/posts/"
-config = configparser.ConfigParser()
+config = ensureConfig.getConfig("main")
 config.read('config.ini')
 # Headers
 # Insures API user-agent

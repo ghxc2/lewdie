@@ -1,4 +1,5 @@
 import discord
+import ensureConfig
 import regex
 import e621
 import configparser
@@ -8,6 +9,9 @@ import saucenao
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 de = discord.Embed()
+
+config = ensureConfig.getConfig("main")
+
 blacklist = {"...", "0.0", "4.4", "7.7", "9.9"}
 commands = "```!help\n" \
            "--- e621 Commands ---\n" \
@@ -200,10 +204,9 @@ async def on_message(message):
     await message_responder(message)
 
 
+# todo: this is fucking wrong if config is invalid, lmao
 print("Loaded successfully")
 # client.run(str(os.environ.get('TOKEN')))
-config = configparser.ConfigParser()
-config.read('config.ini')
 TOKEN = config.get("Tokens", "TOKEN")
 
 client.run(TOKEN)

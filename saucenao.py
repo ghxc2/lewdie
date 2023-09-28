@@ -1,8 +1,8 @@
 import requests
+import ensureConfig
 import configparser
 
-config = configparser.ConfigParser()
-config.read('config.ini')
+config = ensureConfig.getConfig("main")
 
 # Header info
 

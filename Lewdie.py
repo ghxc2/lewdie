@@ -22,21 +22,20 @@ commands = "```!help\n" \
 # Start of functions
 async def command_selector(message):
     which_command = message.content.split(" ")[0]
-    match which_command:
-        case "!e6new":
-            await e6new(message)
-        case "!e6tag":
-            await e6tag(message)
-        case "!e6fav":
-            await e6fav(message)
-        case "!lewdieSTOP":
-            await stop(message)
-        case "!sauce":
-            await sauce(message)
-        case "!icon":
-            await icon(message)
-        case "!help":
-            await help_command(message)
+    if which_command == "!e6new":
+        await e6new(message)
+    elif which_command == "!e6tag":
+        await e6tag(message)
+    elif which_command == "!e6fav":
+        await e6fav(message)
+    elif which_command == "!lewdieSTOP":
+        await stop(message)
+    elif which_command == "!sauce":
+        await sauce(message)
+    elif which_command == "!icon":
+        await icon(message)
+    elif which_command == "!help":
+        await help_command(message)
 
 
 # ---e6 Commands--- #

@@ -1,3 +1,5 @@
+import subprocess
+
 import discord
 import regex
 import e621
@@ -16,7 +18,10 @@ commands = "```!help\n" \
            "!e6fav\n" \
            "--- Misc Commmands ---\n" \
            "!sauce\n" \
-           "!icon\n```"
+           "!icon\n```" \
+           "--- ADMIN COMMANDS ---\n" \
+           "!lewdieUPDATE\n" \
+           "!lewdieSTOP\n"
 
 
 # Start of functions
@@ -36,6 +41,8 @@ async def command_selector(message):
         await icon(message)
     elif which_command == "!help":
         await help_command(message)
+    elif which_command == "!lewdieUPDATE":
+        await update(message)
 
 
 # ---e6 Commands--- #
@@ -115,12 +122,17 @@ async def icon(message):
         await message.channel.send(message.mentions[0].avatar.url)
 
 
-# ---Kill Switch--- #
+# --- ADMIN COMMANDS --- #
 async def stop(message):
-    if message.content.startswith('!lewdieSTOP'):
-        if "ghxc2" in format(message.author):
-            await message.channel.send('Okey! Goodnight')
-            exit()
+    if is_admin(message):
+        await message.channel.send('Okey! Goodnight')
+        exit()
+
+
+async def update(message):
+    if is_admin(message):
+        await message.channel.send("Updating!")
+        subprocess.run(["./update.sh"])
 
 
 # --- Help Command --- #
@@ -139,6 +151,14 @@ def is_lewdie(message):
 
 def is_user(message):
     return not (is_lewdie(message) and is_bot(message))
+
+
+# --- ADMIN CHECKER --- #
+def is_admin(message):
+    if "ghxc2" in format(message.author):
+        return True
+    else:
+        return False
 
 
 # --- Message Responder --- #

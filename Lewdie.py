@@ -1,5 +1,5 @@
 import subprocess
-
+import sys
 import discord
 import regex
 import e621
@@ -19,6 +19,7 @@ commands = "```!help\n" \
            "--- Misc Commmands ---\n" \
            "!sauce\n" \
            "!icon\n```" \
+           "!version\n" \
            "--- ADMIN COMMANDS ---\n" \
            "!lewdieUPDATE\n" \
            "!lewdieSTOP\n"
@@ -43,6 +44,8 @@ async def command_selector(message):
         await help_command(message)
     elif which_command == "!lewdieUPDATE":
         await update(message)
+    elif which_command == "!version":
+        await version(message)
 
 
 # ---e6 Commands--- #
@@ -190,6 +193,12 @@ async def bot_compliment_checker(message):
         await message.channel.send("OwO you're welcome!! >W<")
     if 'bad bot' in str.lower(message.content):
         await message.channel.send('Sowy ;^;')
+
+
+# --- MISC --- #
+async def version(message):
+    v = sys.version_info
+    await message.channel.send("Python: v" + str(v[0]) + "." + str(v[1]) + "." + str(v[2]))
 
 
 # --- RUNTIME --- #

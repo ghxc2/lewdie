@@ -1,3 +1,4 @@
+import random
 import subprocess
 import sys
 import discord
@@ -170,6 +171,9 @@ async def message_responder(message):
     await bot_compliment_checker(message)
 
 
+async def generic_responder(message):
+    await boo_sender(message)
+
 # --- owo checker --- #
 async def owo_checker(message):
     try:
@@ -201,6 +205,12 @@ async def version(message):
     await message.channel.send("Python: v" + str(v[0]) + "." + str(v[1]) + "." + str(v[2]))
 
 
+async def boo_sender(message):
+    rand = random.randrange(1, 100)
+    if rand == 1:
+        await message.channel.send("Boo~ òwó")
+
+
 # --- RUNTIME --- #
 @client.event
 async def on_ready():
@@ -227,6 +237,9 @@ async def on_message(message):
     # Respond to message if contains coded responses
     await message_responder(message)
 
+
+    # Generic responses
+    await generic_responder(message)
 
 print("Loaded successfully")
 # client.run(str(os.environ.get('TOKEN')))

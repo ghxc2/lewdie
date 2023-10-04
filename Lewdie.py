@@ -19,11 +19,12 @@ commands = "```!help\n" \
            "!e6fav\n" \
            "--- Misc Commmands ---\n" \
            "!sauce\n" \
-           "!icon\n```" \
+           "!icon\n" \
            "!version\n" \
            "--- ADMIN COMMANDS ---\n" \
            "!lewdieUPDATE\n" \
-           "!lewdieSTOP\n"
+           "!lewdieSTOP\n" \
+           "```"
 
 
 # Start of functions
@@ -237,9 +238,9 @@ async def on_message(message):
     # Respond to message if contains coded responses
     await message_responder(message)
 
-
     # Generic responses
     await generic_responder(message)
+
 
 print("Loaded successfully")
 # client.run(str(os.environ.get('TOKEN')))

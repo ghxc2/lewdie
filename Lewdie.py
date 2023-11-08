@@ -155,7 +155,7 @@ def is_lewdie(message):
 
 
 def is_user(message):
-    return not (is_lewdie(message) or is_bot(message))
+    return not is_bot(message)
 
 
 # --- ADMIN CHECKER --- #
